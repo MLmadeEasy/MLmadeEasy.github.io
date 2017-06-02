@@ -1,10 +1,6 @@
 ---
 layout: page
-<<<<<<< HEAD
 title: About Us
-=======
-title: About Pixyll
->>>>>>> origin/master
 permalink: /about/
 tags: about
 ---

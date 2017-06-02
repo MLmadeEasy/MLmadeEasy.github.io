@@ -1,18 +1,10 @@
 {% for page in site.pages %}
     {% if page.tags contains "about" %}
-<<<<<<< HEAD
         <a href="{{ page.url }}">{{page.title}}</a>
     {% endif %}
 {% endfor %}
 {% for page in site.pages %}
     {% if page.tags contains "projects" %}
-=======
-        <a href="{{ page.url }}">{{ page.title }}</a>
-    {% endif %}
-{% endfor %}
-{% for page in site.pages %}
-    {% if page.tags contains "contact" %}
->>>>>>> origin/master
         <a href="{{ page.url }}">{{ page.title }}</a>
     {% endif %}
 {% endfor %}
