@@ -27,6 +27,7 @@ extended_fonts: false
 enable_anchorjs: false
 # Preview image for social media aka og:image and twitter:image
 post_preview_image: false
+future: true
 
 # Facebook Page integration
 # (for instant articles and other stuff)
