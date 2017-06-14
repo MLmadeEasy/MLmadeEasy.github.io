@@ -21,30 +21,30 @@ The focus of this tutorial will be on the most important data analysis technique
 The various packages that we will be using are numpy, pandas, matplotlib, seaborn and scikit-learn. All these packages can be downloaded using pip. In your command line, write the command&#58;
 
 {% highlight python %}
-$ pip install scikit-learn numpy pandas matplotlib seaborn
+pip install scikit-learn numpy pandas matplotlib seaborn
 {% endhighlight %}
 
 If you want to use conda, just replace the keyword *pip* with *conda*. We’ll be using the iris dataset, which consists of 4 features: *petal length*, *petal width*, *sepal length* and *sepal width*, all measured in centimetres. The target variable is the species to which a flower belongs, for which there are three possibilities: Setosa, Virginica and Versicolor. The data set is available in scikit-learn, and can hence be imported.
 
 {% highlight python %}
->>> import numpy as np
->>> import pandas as pd
->>> from sklearn import datasets
->>> import matplotlib.pyplot as plt
->>> import seaborn as sns
->>> sns.set()
+import numpy as np
+import pandas as pd
+from sklearn import datasets
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set()
 {% endhighlight %}
 
 Seaborn can be optionally set up in order to make our plots look more attractive. The next step is to load the iris dataset.
 
 {% highlight python %}
->>> iris = datasets.load_iris()
+iris = datasets.load_iris()
 {% endhighlight %}
 
 The dataset is loaded as a bunch. In layman terms, a bunch has features similar to a dictionary. The various keys of the bunch can be explored as:
 
 {% highlight python %}
->>> print(iris.keys())
+print(iris.keys())
 dict_keys(['data', 'target', 'target_names', 'DESCR', 'feature_names'])
 {% endhighlight %}
 
@@ -52,7 +52,7 @@ dict_keys(['data', 'target', 'target_names', 'DESCR', 'feature_names'])
 DESCR contains description of the dataset. Both *data* and *target* are provided as numpy arrays. Next, we see the shape of *data*:
 
 {% highlight python %}
->>> print(iris.data.shape)
+print(iris.data.shape)
 (150,4)
 {% endhighlight %}
 
@@ -60,7 +60,7 @@ DESCR contains description of the dataset. Both *data* and *target* are provided
 This shows that the data has 150 rows and 4 columns. Remember that each individual row represents one observation, while each column represents a feature. Also, the target variable is included as 0 for Sentosa, 1 for Versicolor and 2 for Virginica. This can be seen as follows:
 
 {% highlight python %}
->>> print(iris.target_names)
+print(iris.target_names)
 ['setosa','versicolor','virginica']
 {% endhighlight %}
 
@@ -68,15 +68,15 @@ This shows that the data has 150 rows and 4 columns. Remember that each individu
 Their indices in the list correspond to their values. In order to perform EDA, we assign variables *X* and *y* to data and target respectively and create a pandas dataframe.
 
 {% highlight python %}
->>> X = iris.data
->>> y = iris.target
->>> df = pd.DataFrame(X, columns=iris.feature_names)
+X = iris.data
+y = iris.target
+df = pd.DataFrame(X, columns=iris.feature_names)
 {% endhighlight %}
 
 Next we take a look at the head of the dataframe.
 
 {% highlight python %}
->>> df.head()
+df.head()
 {% endhighlight %}
 
 {% include image.html img="images/EDA/irishead.png" title="title for image" caption="First five rows of iris dataset" %}
@@ -84,7 +84,7 @@ Next we take a look at the head of the dataframe.
 This shows us the first five rows of the dataset. Next, we use the *describe* function of the dataframe to get information about the features.
 
 {% highlight python %}
->>> df.describe()
+df.describe()
 {% endhighlight %}
 
 {% include image.html img="images/EDA/irisdescribe.png" title="title for image" caption="Statistics of features of iris dataset" %}
@@ -92,8 +92,8 @@ This shows us the first five rows of the dataset. Next, we use the *describe* fu
 The *describe* function gives us the total no. of instances in a column (*count*), mean, standard deviation, etc. for all the features. For visual EDA, we use the pandas function *scatter_matrix*:
 
 {% highlight python %}
->>> % matplotlib inline
->>> pd.scatter_matrix(df,c = y,figsize=[8,8],s=150,marker='D')
+% matplotlib inline
+pd.scatter_matrix(df,c = y,figsize=[8,8],s=150,marker='D')
 {% endhighlight %}
 
 {% include image.html img="images/EDA/irisscatter.png" title="title for image" caption="Scatter matrix of all iris features" %}
@@ -105,7 +105,7 @@ The **%matplotlib inline** command is used to display the plot without using the
 Correlation between any two features can be understood with the help of simple scatter plots as well. Using seaborn, scatter plot with a linear fit for petal length and petal width can be plotted as follows:
 
 {% highlight python %}
->>> sns.jointplot(x='petal length (cm)', y='petal width (cm)', data=df, kind='reg')
+sns.jointplot(x='petal length (cm)', y='petal width (cm)', data=df, kind='reg')
 {% endhighlight %}
 
 {% include image.html img="images/EDA/snsreg.png" title="title for image" caption="Scatter plot of petal length and petal width" %}
@@ -113,7 +113,7 @@ Correlation between any two features can be understood with the help of simple s
 If you don’t want the linear fit, simply change the *kind* parameter to *scatter*. The scatter plot also gives us the [pearson’s coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) and the [p-value](http://www.dummies.com/education/math/statistics/what-a-p-value-tells-you-about-statistical-data/) associated with the two features. Apart from histograms, individual features can be analyzed with the help of box plots. In order to understand box plots, you can checkout out its [wikipedia page](https://en.wikipedia.org/wiki/Box_plot). Box plot can be plotted for petal length using seaborn as follows:
 
 {% highlight python %}
->>> sns.boxplot('petal length (cm)', data=df)
+sns.boxplot('petal length (cm)', data=df)
 {% endhighlight %}
 
 {% include image.html img="images/EDA/snsbox.png" title="title for image" caption="Box plot of petal length" %}
