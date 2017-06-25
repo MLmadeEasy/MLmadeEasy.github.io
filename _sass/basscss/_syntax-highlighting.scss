@@ -1,5 +1,7 @@
 .highlight {
   -webkit-text-size-adjust: none;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .highlight .c,
@@ -16,9 +18,16 @@
 .highlight .kd,
 .highlight .kn,
 .highlight .kr,
-.highlight .kt,
 .highlight .kp {
   color: $hljs-keyword;
+}
+
+.highlight .nf {
+  color: $hljs-type;
+}
+
+.highlight .kt {
+  color: $hljs-attribute;
 }
 
 .highlight .na,
@@ -28,7 +37,6 @@
 .highlight .nd,
 .highlight .ni,
 .highlight .ne,
-.highlight .nf,
 .highlight .nl,
 .highlight .nn,
 .highlight .nx {
@@ -59,7 +67,7 @@
 .hljs-id,
 .scss .hljs-preprocessor {
   color: $hljs-title;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .highlight .k {
@@ -99,7 +107,7 @@
 .hljs-shebang,
 .hljs-cdata {
   color: $hljs-preprocessor;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .hljs-deletion {
